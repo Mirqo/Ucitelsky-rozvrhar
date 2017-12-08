@@ -164,10 +164,12 @@ function get_names() {
    $.post("getNames.php", function (data){
       var names = JSON.parse(data);
 
-      $("datalist").html("<option value=" + names[0].name + ">");
-      for (var i = 1; i < names.length; i++){
-         //console.log(names.length);
-         $("datalist>option:last-child").append("<option value=" + names[i].name + ">");
+      if (names.length > 0){
+         $("datalist").html("<option value=" + names[0].name + ">");
+         for (var i = 1; i < names.length; i++){
+            //console.log(names.length);
+            $("datalist>option:last-child").append("<option value=" + names[i].name + ">");
+         }
       }
    });
 }
