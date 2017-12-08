@@ -104,17 +104,19 @@ function writeToDB(){
    var nname = $('#name1').val();
    $("#submit").after("<div class='loader'></div>");
    $("#loadButton").attr("disabled", true);
-   console.log(jsonData);
    $.post("saveToDB.php", { name: nname, jsondata: jsonData}, function (data) {
       console.log("posted data");
       $("#loadButton").removeAttr("disabled", true);
-      $(".loader").remove();});
-   get_names();
+      $(".loader").remove();
+      get_names();
+   });
 }
 function getTimetableByName(){
+   $("#loadButton").after("<div class='loader'></div>");
    var nname = $('#name2').val();
    $.post("getTimetable.php", { name: nname}, function(data){
       makeTimetable(data);
+      $(".loader").remove();
    });
 }
 function makeTimetable(data){
