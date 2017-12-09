@@ -13,7 +13,7 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DISTINCT name FROM rocnikac";
+$sql = "SELECT DISTINCT name FROM rocnikac ORDER BY name";
 $result = $conn->query($sql);
 $rows = array();
 while($r = mysqli_fetch_assoc($result)) {
