@@ -84,10 +84,12 @@ function writeToDB(){
    for (var i = 0; i < table.length; i++){
       var type = table[i].class;
       var day = table[i].day;
+      var note = "";
       var a = new Object();
       if (type != "whiteCell"){
          a.time = minute;
          a.day = day;
+         a.note = note;
          if (type == "redCell"){
             a.type = 0;
          }
@@ -100,10 +102,12 @@ function writeToDB(){
          minute += 50;
       }
    }
+   console.log(result);
    var jsonData = JSON.stringify(result);
    var nname = $('#name1').val();
    $("#submit").after("<div class='loader'></div>");
    $("#loadButton").attr("disabled", true);
+   console.log(jsonData);
    $.post("saveToDB.php", { name: nname, jsondata: jsonData}, function (data) {
       console.log("posted data");
       $("#loadButton").removeAttr("disabled", true);
@@ -115,6 +119,7 @@ function getTimetableByName(){
    $("#loadButton").after("<div class='loader'></div>");
    var nname = $('#name2').val();
    $.post("getTimetable.php", { name: nname}, function(data){
+      console.log(JSON.parse(data));
       makeTimetable(data);
       $(".loader").remove();
    });
@@ -165,16 +170,22 @@ function makeTimetable(data){
 function get_names() {
    $.post("getNames.php", function (data){
       var names = JSON.parse(data);
+      console.log(data);
 
       if (names.length > 0){
-         $("datalist").html("<option value=" + names[0].name + ">");
+         $("datalist").html("<option value=" + names[0].username + ">");
          for (var i = 1; i < names.length; i++){
-            //console.log(names.length);
-            $("datalist>option:last-child").append("<option value=" + names[i].name + ">");
+            $("datalist>option:last-child").append("<option value=" + names[i].username + ">");
          }
       }
    });
 }
+function getResponse(){ // just for testing
+   $.post("response.php", function (data){
+      console.log(data);
+   });
+}
+
 $(document).ready(function (){
    get_names();
 });

@@ -14,7 +14,7 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT name, day, time, type FROM rocnikac WHERE name ='$name'";
+$sql = "SELECT * FROM rocnikac where username='$name'";
 $result = $conn->query($sql);
 $rows = array();
 while($r = mysqli_fetch_assoc($result)) {

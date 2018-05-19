@@ -1,0 +1,29 @@
+create admin page - here should be able to
+1. create/delete users - toto by bolo fajn spravit ako prompt
+2. view everyones schedule - mozno dalsi page (alebo tab vo vnutri appky) - staci dropdown menu, tlacitko a
+3. some kind of import/export functionality, txt for start, maybe pdf?
+
+create user acounts:
+1. go to phpmyadmin and create table with username, hashed password, salt used, note
+2. code php function to create new user
+
+create user page:
+1. login screen and cookies for session
+2. only view own schedule
+
+create user function:
+1. takes username
+2. email (for recovery)
+3. password twice
+4. sends these to to server
+5. check if the strings are safe
+6. check if username is taken (also on client side but check here too)
+7. generate salt
+8. hash pass with salt
+
+add note for writing additional info:
+1. drop table
+2. make new one without id
+3. also gonna have to store note in user table
+
+beautify the site <3

@@ -6,8 +6,10 @@ $username = $config['username'];
 $password = $config['password'];
 $dbname = $config['dbname'];
 
-$name = test_input($_POST['name']);
-$json = json_decode($_POST['jsondata']);
+$name = test_input($_POST['username']);
+$pass = test_input($_POST['password']);
+$email = test_input($_POST['email']);
+//$json = json_decode($_POST['data']);
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,14 +18,8 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$conn->query("DELETE FROM rocnikac WHERE username='$name'");
-$note = "";
-foreach($json as &$val){
-
-   $sql = "INSERT INTO rocnikac (username, day, time, type, note) VALUES ('$name', '$val->day', '$val->time', '$val->type',
-      '$val->note')";
-   $result = $conn->query($sql);
-}
+$sql = "INSERT INTO users (username, password, salt, email) VALUES ('$name', '$pass', 123456, '$email')";
+$result = $conn->query($sql);
 
 $conn->close();
 
