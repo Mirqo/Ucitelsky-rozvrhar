@@ -6,9 +6,10 @@ $username = $config['username'];
 $password = $config['password'];
 $dbname = $config['dbname'];
 
-$name = test_input($_POST['username']);
-$pass = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
-$email = test_input($_POST['email']);
+//$name = $email = test_input($_POST['username']);
+//$pass = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
+
+$name = $email = 'name';
 //$json = json_decode($_POST['data']);
 
 // Create connection
@@ -18,9 +19,18 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO users (username, password, email) VALUES ('$name', '$pass', '$email')";
+// get record by email or username
+$sql = "SELECT password FROM users WHERE username='$name' OR email='$email'";
 $result = $conn->query($sql);
 
+while($r = mysqli_fetch_assoc($result)) {
+   if (password_verify($pass, $r['password'])){
+      // ak su rovnake, nastav $session a redirectni na userHome
+      $_SESSION['username'] = $name;
+      header("location: welcome.php");
+      break;
+   }
+}
 $conn->close();
 
 function test_input($data) {
@@ -30,3 +40,4 @@ function test_input($data) {
   return $data;
 }
 ?> 
+

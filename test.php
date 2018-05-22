@@ -1,16 +1,11 @@
  <?php
 // Start the session
 session_start();
+$_SESSION['username'] = 'admin';
 ?>
 <!DOCTYPE html>
 <html>
 <body>
-
-<form action="welcome.php" method="post">
-Name: <input type="text" name="username"><br>
-Password: <input type="password" name="password"><br>
-E-mail: <input type="text" name="email"><br>
-<input type="submit">
 
 <?php
 // Set session variables
