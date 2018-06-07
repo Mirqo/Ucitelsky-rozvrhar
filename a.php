@@ -1,5 +1,8 @@
 <?php
-$s = "hello world\n";
-echo str_replace("world", "peter", $s);
-echo $s;
+for ($i = 0; $i < 10; ++$i){
+   if (true){
+      continue;
+   }
+   echo "'$i'\n";
+}
 ?>

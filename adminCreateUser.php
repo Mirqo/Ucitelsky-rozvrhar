@@ -29,6 +29,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']) || $_SESSION['u
       }
       #momentalnyUzivatelia {
          margin-right: 50px;
+         margin-top: 10px;
+         margin-bottom: 10px;
       }
       #formsHolder {
          display: block;
@@ -111,10 +113,10 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']) || $_SESSION['u
         <h3>Sprava ktora sa posle v emaili spolu s heslom</h3>
         <p>#email# a #heslo# budú nahradené údajmi pre daný účet.</p>
         <textarea rows="12" cols="50">
-Dobry den,
+Dobrý deň,
 
-Bol Vam vytvoreni ucet na stranke www.todo.sk, sluziaci na to, aby ste si mohli vyklikat, kedy chcete/nechcete/nemozete ucit.
-Vase prihlasovacie udaje su:
+Bol Vám vytvorený účet na stránke https://miroslavmrozek7.000webhostapp.com, slúžaci nato, aby ste si mohli vyklikať, kedy chcete/nechcete/nemôžete učiť.
+Vaše prihlasovacie údaje sú:
 
 email: #email#
 heslo: #heslo#</textarea>

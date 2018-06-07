@@ -65,7 +65,6 @@ if ($newName != ''){
 
 print $message;
 $conn->close();
-header("location: error.php?error=$message");
 exit;
 
 

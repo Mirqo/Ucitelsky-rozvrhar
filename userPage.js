@@ -118,7 +118,7 @@ function writeToDB(){
 function getMyTimetableFromDB(){
    $("#loadButton").after("<div class='loader'></div>");
    $.post("getMyTimetable.php", function(data){
-      console.log(JSON.parse(data));
+      console.log(data);
       makeTimetable(data);
       $(".loader").remove();
    });

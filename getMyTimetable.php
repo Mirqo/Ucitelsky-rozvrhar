@@ -27,7 +27,8 @@ while($r = mysqli_fetch_assoc($result)) {
 }
 $sql = "SELECT note FROM users where username='$name'";
 $result = $conn->query($sql);
-while($r = mysqli_fetch_assoc($result)) {
+$note = "aaa";
+if($r = mysqli_fetch_assoc($result)) {
    $note = $r['note'];
 }
 

@@ -29,9 +29,11 @@ foreach($json as &$val){
    $result = $conn->query($sql);
 }
 $sql = "UPDATE users SET note = '$note' WHERE username = '$name'";
+$result = $conn->query($sql);
 print $result = $conn->query($sql);
 
 $conn->close();
+exit;
 
 function test_input($data) {
   $data = trim($data);

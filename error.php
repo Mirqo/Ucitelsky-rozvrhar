@@ -11,7 +11,6 @@ print $_GET['error'];
 ?>
 </h1>
 <a href="userPage.php">Naspäť</a>
-  
-  </body>
+</body>
 </html>
 

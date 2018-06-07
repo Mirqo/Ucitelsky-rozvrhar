@@ -18,28 +18,27 @@ if ($conn->connect_error) {
 }
 
 // get record by email or username
-$sql = "SELECT password FROM users WHERE username='$name' OR email='$email'";
+$sql = "SELECT username, password FROM users WHERE username='$name' OR email='$email'";
 $result = $conn->query($sql);
 $conn->close();
 
 
-while($r = mysqli_fetch_assoc($result)) {
+if ($r = mysqli_fetch_assoc($result)) {
    if (password_verify($pass, $r['password'])){
       // ak su rovnake, nastav $session a redirectni na userHome
-      $_SESSION['username'] = $name;
+      $_SESSION['username'] = $r['username'];
       if ($name == 'admin'){
          header("location: adminViewTimetable.php");
+         exit;
       }
       else {
          header("location: userPage.php");
+         exit;
       }
-      exit;
    }
-   $s = $r['password'];
-   header("location: error.php?error=Zle prihlasovacie udaje.<br>");
 }
 
-//header("location: login.html");
+header("location: error.php?error=Zle prihlasovacie udaje.<br>");
 exit;
 function test_input($data) {
   $data = trim($data);

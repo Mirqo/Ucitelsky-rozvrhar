@@ -43,10 +43,10 @@ for ($i = 0; $i < count($people); $i++){
    $result = $conn->query($sql);
 
    if($r = mysqli_fetch_assoc($result)) {
-      $resultMessage .= "Nepodarilo sa pridať '$realname', email už je zabratý.\n";
+      $resultMessage .= "Nepodarilo sa pridať '$realname', email '$email' už je zabratý.\n";
       continue;
    }
-   for ($i = 0; $i < 50; ++$i){
+   while (TRUE){
       $sql = "SELECT 1 FROM users WHERE username='$name'";
       $result = $conn->query($sql);
 
@@ -58,7 +58,7 @@ for ($i = 0; $i < count($people); $i++){
    }
 
    $novaSprava = str_replace("#email#", $email, $sprava);
-   $novaSprava = str_replace("#heslo#", $pass, $sprava);
+   $novaSprava = str_replace("#heslo#", $pass, $novaSprava);
 
    $pass = password_hash($pass, PASSWORD_DEFAULT);
 
@@ -66,7 +66,7 @@ for ($i = 0; $i < count($people); $i++){
    $result = $conn->query($sql);
 
    $novaSprava = wordwrap($novaSprava,70);
-   //mail($email, "Rozvrhar",$novaSprava);
+   mail($email, "Rozvrhar",$novaSprava);
 }
 if ($resultMessage == ''){
    $resultMessage = "Všetko prebehlo úspešne.";
