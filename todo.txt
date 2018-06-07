@@ -3,10 +3,6 @@ create admin page - here should be able to
 2. view everyones schedule - mozno dalsi page (alebo tab vo vnutri appky) - staci dropdown menu, tlacitko a
 3. some kind of import/export functionality, txt for start, maybe pdf?
 
-create user acounts:
-1. go to phpmyadmin and create table with username, hashed password, salt used, note
-2. code php function to create new user
-
 create user page:
 1. login screen and cookies for session
 2. only view own schedule

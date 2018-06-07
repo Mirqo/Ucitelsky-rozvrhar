@@ -1,0 +1,16 @@
+@media print {
+   input, .navbar, #submitForm, .nonPrint, button {
+      display: none;
+   }
+   .print {
+      display: inline;
+   }
+   td span{
+      display: block;
+      margin: auto;
+      text-align: center;
+   }
+   #legenda {
+      margin: 0px;
+   }
+}

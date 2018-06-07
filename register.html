@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+<title>Register</title>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -69,20 +70,23 @@ span.psw {
 <body>
 
 
-<form action="handleLogin.php" method="post">
+<form action="handleRegister.php" method="post">
 
   <div class="container">
-    <label for="uname"><b>Username or Email</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required autofocus>
 
-    <label for="psw"><b>Password</b></label>
+    <label><b>Celé meno</b></label>
+    <input type="text" placeholder="Enter full Name" name="realname" required>
+
+    <label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+
+    <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
         
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-    <a href="register.html">Register</a>
+    <button type="submit">Register</button>
+    <a href="login.html">Login</a>
   </div>
 
 </form>

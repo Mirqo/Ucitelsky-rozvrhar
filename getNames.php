@@ -13,7 +13,7 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DISTINCT username FROM rocnikac ORDER BY username";
+$sql = "SELECT DISTINCT realname FROM users WHERE NOT realname='' ORDER BY realname";
 $result = $conn->query($sql);
 $rows = array();
 while($r = mysqli_fetch_assoc($result)) {

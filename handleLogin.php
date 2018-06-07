@@ -1,4 +1,5 @@
 <?php
+session_start();
 $config = parse_ini_file("../../moj_config.ini.php");
 
 $servername = "localhost";
@@ -6,11 +7,8 @@ $username = $config['username'];
 $password = $config['password'];
 $dbname = $config['dbname'];
 
-//$name = $email = test_input($_POST['username']);
-//$pass = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
-
-$name = $email = 'name';
-//$json = json_decode($_POST['data']);
+$name = $email = test_input($_POST['username']);
+$pass = test_input($_POST['password']);
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,17 +20,27 @@ if ($conn->connect_error) {
 // get record by email or username
 $sql = "SELECT password FROM users WHERE username='$name' OR email='$email'";
 $result = $conn->query($sql);
+$conn->close();
+
 
 while($r = mysqli_fetch_assoc($result)) {
    if (password_verify($pass, $r['password'])){
       // ak su rovnake, nastav $session a redirectni na userHome
       $_SESSION['username'] = $name;
-      header("location: welcome.php");
-      break;
+      if ($name == 'admin'){
+         header("location: adminViewTimetable.php");
+      }
+      else {
+         header("location: userPage.php");
+      }
+      exit;
    }
+   $s = $r['password'];
+   header("location: error.php?error=Zle prihlasovacie udaje.<br>");
 }
-$conn->close();
 
+//header("location: login.html");
+exit;
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
