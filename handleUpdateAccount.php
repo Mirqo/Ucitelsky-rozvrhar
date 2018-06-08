@@ -62,6 +62,7 @@ if ($newName != ''){
       $message .= "Meno bolo úspešne zmenené.<br>";
    }
 }
+$message .= "<a href='userPage.php'>Naspäť</a>";
 
 print $message;
 $conn->close();

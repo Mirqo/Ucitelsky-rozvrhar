@@ -20,10 +20,13 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']) || $_SESSION['u
    <body class="">
       <div class="navbar">
          <h3>Rozvrhar - Admin</h3>
+         <a href="adminViewTimetable.php">Pozrieť rozvrhy</a>
          <a href="adminCreateUser.php">Vytvoriť používateľské účty</a>
+         <a href="adminDeleteUser.php">Vytvoriť používateľské účty</a>
          <a href="userUpdateAccount.php">Zmeniť prihlasovacie udaje</a>
          <a href="logout.php">Odhlásiť</a>
       </div>
+      <h3 class="print" id="titleName"><br></h3>
       <table id="mytab1">
          <tr>
             <th></th>
@@ -147,21 +150,25 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']) || $_SESSION['u
          </tr>
       </table>
       <div id="legenda">
-      <ul>
-      <li><span class="nonPrint">Red</span><span class="print">X</span> - tu nemôžem učiť</li>
-      <li><span class="nonPrint">Yellow</span><span class="print">?</span> - tu by som nerád učil, ale teoreticky môžem</li>
-      <li><span class="nonPrint">White</span><span class="print">prázdne</span> - tu môžem učiť</li>
-      </ul>
-      <div class="nonPrint">
-         Meno, koho rozvrh treba vytiahnut z databazy<br>
-         <input list="names" id="name2" name="name" autocomplete="off">
-         <datalist id="names">
-         </datalist>
-         <button id="loadButton" type="button" onclick="getTimetableByName()">Load Timetable</button>
-      </div>
+         <ul>
+            <li><span class="nonPrint">Red</span><span class="print">X</span> - tu nemôžem učiť</li>
+            <li><span class="nonPrint">Yellow</span><span class="print">?</span> - tu by som nerád učil, ale teoreticky môžem</li>
+            <li><span class="nonPrint">White</span><span class="print">prázdne</span> - tu môžem učiť</li>
+         </ul>
+         <div>
+            <h3>Poznámka</h3>
+            <p id="note"></p>
+         </div>
+         <div class="nonPrint">
+            Meno, koho rozvrh treba vytiahnut z databazy<br>
+            <input list="names" id="name2" name="name" autocomplete="off">
+            <datalist id="names">
+            </datalist>
+            <button id="loadButton" type="button" onclick="getTimetableByName()">Load Timetable</button>
+         </div>
       </div>
       <div id="printButton">
-      <button type="button" onclick="window.print()">Tlačiť rozvrh</button>
+         <button type="button" onclick="window.print()">Tlačiť rozvrh</button>
       </div>
    </body>
 </html>

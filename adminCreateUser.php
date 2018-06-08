@@ -71,7 +71,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username']) || $_SESSION['u
   <body>
       <div class="navbar">
          <h3>Rozvrhar - Admin</h3>
+         <a href="adminViewTimetable.php">Pozrieť rozvrhy</a>
          <a href="adminCreateUser.php">Vytvoriť používateľské účty</a>
+        <a href="adminDeleteUser.php">Zmazať používateľské účty</a>
          <a href="userUpdateAccount.php">Zmeniť prihlasovacie udaje</a>
          <a href="logout.php">Odhlásiť</a>
       </div>

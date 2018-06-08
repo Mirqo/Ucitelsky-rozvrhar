@@ -15,10 +15,12 @@ if ($conn->connect_error) {
 }
 
 $name = "";
-$sql = "SELECT username FROM users where realname='$realname'";
+$note = "";
+$sql = "SELECT username, note FROM users where realname='$realname'";
 $result = $conn->query($sql);
 if($r = mysqli_fetch_assoc($result)) {
    $name = $r['username'];
+   $note = $r['note'];
 }
 
 $sql = "SELECT * FROM rocnikac where username='$name'";
@@ -27,7 +29,11 @@ $rows = array();
 while($r = mysqli_fetch_assoc($result)) {
    $rows[] = $r;
 }
-print json_encode($rows);
+$ans = new stdClass();
+$ans->rows = $rows;
+$ans->note = $note;
+
+print json_encode($ans);
 $conn->close();
 
 function test_input($data) {

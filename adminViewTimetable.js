@@ -6,11 +6,18 @@ function getTimetableByName(){
       makeTimetable(data);
       $(".loader").remove();
       document.title = nname;
+      $("#titleName").text(nname);
+      $("#titleName").after("<br class='print'>");
    });
 }
 function makeTimetable(data){
    // funkcia zobrazi rozvrh vyucujuceho
-   var table = JSON.parse(data);
+   var newData = JSON.parse(data);
+   var table = newData.rows;
+   var note = newData.note;
+
+   $('#note').text(note);
+
 
    $('table').each(function(){
       var i = 0; // ak i/5 je riadok, i%5 stlpec
